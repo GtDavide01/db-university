@@ -16,9 +16,9 @@ GROUP BY `teachers`.`office_address`
 
 3 - Calcolare la media dei voti di ogni appello d'esame
 
-SELECT AVG(`exam_student`.`vote`) as media_voto  
+SELECT AVG(`vote`) , `exam_student`.`exam_id`
 FROM `exam_student`
-GROUP BY `exam_student`.`vote`;
+GROUP BY `exam_student`.`exam_id`;
 
 ----------------------------------------------------------------
 
@@ -32,21 +32,3 @@ GROUP BY `departments`.`name`;
 
 
 -----------------------------------------------------------------
-
-5 - Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
-
-SELECT `departments`.`name` , `degrees`.`name`, `teachers`.`id`
-FROM `departments`
-INNER JOIN `degrees`
-ON `degrees`.`department_id` = `departments`.`id`
-INNER JOIN `courses`
-ON `courses`.`degree_id` = `degrees`.`id`
-INNER JOIN course_teacher
-ON `courses`.`id` = `course_teacher`.`course_id`
-INNER JOIN `teachers`
-ON `teachers`.`id` = `course_teacher`.`teacher_id`
-WHERE `departments`.`name` = "Dipartimento di Matematica";
-
---------------------------------------------------------------
-
-6 - 
